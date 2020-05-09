@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  const Resource = sequelize.define("Resource", {
-    name: {
+  const Resources = sequelize.define("Resources", {
+    resourceName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -19,19 +19,11 @@ module.exports = function(sequelize, DataTypes) {
         isUrl: true,
       },
     },
-    saved: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
     featured: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
   });
 
-  Resource.associate = function(models) {
-    Resource.hasMany(models.Tag);
-  };
-
-  return Resource;
+  return Resources;
 };
