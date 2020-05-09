@@ -8,13 +8,13 @@ var models = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function (app) {
+module.exports = function(app) {
 
-  app.get("/api/todos", function (req, res) {});
+  app.get("/api/resources", function (req, res) {});
 
-  app.post("/api/todos", function (req, res) {});
+  app.post("/api/resources", function (req, res) {});
 
-  app.put("/api/todos", function (req, res) {});
+  app.put("/api/resources", function (req, res) {});
 
-  app.delete("/api/todos/:id", function (req, res) {});
+  app.delete("/api/resources/:id", function (req, res) {});
 };
