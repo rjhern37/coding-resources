@@ -3,26 +3,28 @@
         <div class="navbar-item">
             <i class="fas fa-code fa-2x"></i>
         </div>
-        <h1 class="navbar-item page-title">Coding Resources</h1>
+        <a class="navbar-item page-title" href="/home">Coding Resources</a>
     </div>
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a id="saved-resources" class="button is-primary">
-            <strong>Saved Resources</strong>
-          </a>
-          <a id="logout" class="button" href="/logout">
-            <strong class="has-text-light">Logout</strong>
-          </a>
+        <div class="navbar-item">
+            <div class="buttons">
+                <a id="saved-resources" class="button is-primary" href="/api/resources">
+                    <strong>Saved Resources</strong>
+                </a>
+                <a id="logout" class="button" href="/logout">
+                    <strong class="has-text-light">Logout</strong>
+                </a>
+            </div>
         </div>
-      </div>
     </div>
 </nav>
 <section class="section">
     <div class="container">
         <div class="columns">
             <div class="column">
-                
+                {{#each resources}}
+                {{> resource-block}}
+                {{/each}}
             </div>
         </div>
     </div>
