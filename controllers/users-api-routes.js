@@ -1,20 +1,14 @@
 // *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// users-api-routes.js - Routes for displaying and saving data to the users table
 // *********************************************************************************
 
 // Dependencies
 // =============================================================
-var models = require("../models");
+var db = require("../models");
 
 // Routes
 // =============================================================
 module.exports = function(app) {
 
-  app.get("/api/resources", function (req, res) {});
 
-  app.post("/api/resources", function (req, res) {});
-
-  app.put("/api/resources", function (req, res) {});
-
-  app.delete("/api/resources/:id", function (req, res) {});
 };
