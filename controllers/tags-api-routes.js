@@ -8,16 +8,16 @@ const db = require("../models");
 
 // https://medium.com/@hz.bird55/using-sequelize-bulkcreate-method-with-mysql-database-1ebd1bae2109
 
-db.Tags.findAll({
-  where: {id: 1},
-  include: [{
-    model: db.Resources,
-    required: true
-  }]
-})
-.then(function(data) {
-  console.log(data);
-});
+// db.Tags.findAll({
+//   where: {id: 1},
+//   include: [{
+//     model: db.Resources,
+//     required: true
+//   }]
+// })
+// .then(function(data) {
+//   console.log(data);
+// });
 
 // Routes
 // =============================================================
