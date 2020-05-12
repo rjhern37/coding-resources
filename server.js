@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Express - enable sessions
-app.use(session({ secret: "cat", resave: true, saveUninitialized: true }));
+app.use(session({ secret: "super secret", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
