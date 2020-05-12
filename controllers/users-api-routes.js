@@ -12,8 +12,7 @@ const passport = require("../config/passport");
 module.exports = function (app) {
   // Login user
   app.post("/api/login", function (req, res) {
-    console.log(req.user);
-    res.json(req.user);
+    res.render("index");
   });
 
   // Create new user
