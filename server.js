@@ -20,6 +20,11 @@ app.use(express.json());
 // Express - static directory
 app.use(express.static("public"));
 
+// Express - enable sessions
+app.use(session({ secret: "cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Express - config Handlebars.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
