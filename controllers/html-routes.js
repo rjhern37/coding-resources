@@ -13,10 +13,10 @@ const authenitcate = require("../config/authenticate");
 module.exports = function (app) {
   app.get("/", function (req, res) {
     // If the user already has an account send them to the members page
-    if (req.user) {
-      res.render("index");
-    }
-    res.render("signup");
+    res.render("index");
+    // if (req.user) {
+    // }
+    // res.render("signup");
   });
 
   app.get("/login", function (req, res) {
