@@ -1,6 +1,13 @@
-html,
-body {
+html {
+  margin: 0px;
   height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
 }
 
 body {
@@ -25,6 +32,9 @@ a {
   color: #4a4a4a;
   font-weight: 700;
   font-size: 2rem;
+}
+a.navbar-item:hover {
+  color: #4a4a4a;
 }
 
 .form-size {
@@ -66,6 +76,21 @@ a {
 }
 #logout:hover {
   background-color: rgb(255, 121, 97);
+}
+
+.card {
+  background-color: #f4f4f9;
+  margin-bottom: 1rem;
+}
+
+.card-header {
+  background-color: #18dbd0;
+}
+
+.resource-name {
+  color: #f4f4f9;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 @media only screen and (min-width: 600px) {
