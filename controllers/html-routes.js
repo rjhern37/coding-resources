@@ -14,3 +14,11 @@ module.exports = function(app) {
     res.render("index");
   });
 };
+
+app.get("/", function(req, res) {
+  res.sendFile(path.join(_dirname, "..public/script.html"));
+});
+
+app.get("/line", function(req, res) {
+  res.sendFile(path.join(_dirname, "../public/line-manager.html"))
+});
