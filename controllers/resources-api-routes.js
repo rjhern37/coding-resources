@@ -13,13 +13,16 @@ const db = require("../models");
 module.exports = function(app) {
   // Find all resources
   app.get("/api/resources", function(req, res) {
-    db.Resources.findAll()
-      .then(function(data) {
-        res.json(data);
-      })
-      .catch(function(err) {
-        res.status(500).send(err);
+    db.Resources.findAll({})
+    .then(function(data) {
+      let resources = data.map(resource => resource.dataValues);
+      res.render("index", {
+        resources: resources
       });
+    })
+    .catch(function(err) {
+      res.status(500).send(err);
+    });
   });
 
   // Find resource by name
