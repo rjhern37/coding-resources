@@ -2,14 +2,44 @@ $(document).ready(function () {
   const loginBtn = $("#login-btn");
   const signupBtn = $("#signup-btn");
   const loginInput = $("#login-username");
-  const usernameSignup = $("#signup-username");
+  const signupInput = $("#signup-username");
 
-
-  function loginUser(user) { // Login user and redirect to home
-    $.post("/api/login", {
-      username: user
+  // SIGNUP
+  // ==================================================
+  function signupUser(username) {
+    // Signup user and redirect to login
+    $.post("/api/signup", {
+      username: username,
     })
-      .then(function() {
+      .then(function () {
+        window.location.replace("/login");
+        // If there's an error, log the error
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  signupBtn.on("click", function (e) {
+    // Login event handler
+    e.preventDefault();
+    let user = {
+      username: signupInput.val().trim(),
+    };
+    if(signupInput === '') {
+      return;
+    }
+    signupUser(user.username);
+    signupInput.val("");
+  });
+
+  // LOGIN
+  // ==================================================
+  function loginUser(username) {
+    // Login user and redirect to home
+    $.post("/api/login", {
+      user: username,
+    })
+      .then(function () {
         window.location.replace("/home");
         // If there's an error, log the error
       })
@@ -17,14 +47,13 @@ $(document).ready(function () {
         console.log(err);
       });
   }
-
-
-  loginBtn.on("click", function(e) { // Login event handler
+  loginBtn.on("click", function (e) {
+    // Login event handler
     e.preventDefault();
     let user = {
-      username: loginInput.val().trim()
+      username: loginInput.val().trim(),
     };
-    if (!loginInput) {
+    if (loginInput === '') {
       return;
     }
     loginUser(user.username);
