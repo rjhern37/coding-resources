@@ -49,16 +49,23 @@ a {
   color: #4a4a4a;
 }
 
-.button.is-link {
+.button.is-link, #saved-resources {
   background-color: #18dbd0;
 }
 
-.button.is-link:hover {
+.button.is-link:hover, #saved-resources:hover {
   background-color: #70e6df;
 }
 
 .redirect-link {
   margin-top: 2rem;
+}
+
+#logout {
+  background-color: tomato;
+}
+#logout:hover {
+  background-color: rgb(255, 121, 97);
 }
 
 @media only screen and (min-width: 600px) {
