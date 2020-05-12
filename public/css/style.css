@@ -83,8 +83,12 @@ a.navbar-item:hover {
   margin-bottom: 1rem;
 }
 
+.card-header {
+  background-color: #18dbd0;
+}
+
 .resource-name {
-  color: #4a4a4a;
+  color: #f4f4f9;
   font-size: 1.5rem;
   font-weight: 500;
 }
