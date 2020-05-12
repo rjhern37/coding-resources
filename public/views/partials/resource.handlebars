@@ -1,0 +1,11 @@
+<li>
+
+	{{!-- LIST GROUP TO DISPLAY THE RESOURCES --}}
+	{{name}}
+
+	<button class="edit-resource" data-id="{{id}}" data-newsleep="{{sleep}}">
+		{{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}}
+	</button>
+
+	<button class="delete-resource" data-id="{{this.id}}">DELETE</button>
+</li>
