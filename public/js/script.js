@@ -1,15 +1,16 @@
 $(document).ready(function () {
   const loginBtn = $("#login-btn");
   const signupBtn = $("#signup-btn");
-  const loginInput = $("#login-username");
-  const signupInput = $("#signup-username");
+  const usernameInput = $("#username-input");
+  const passwordInput = $("#password-input");
 
   // SIGNUP
   // ==================================================
-  function signupUser(username) {
+  function signupUser(username, password) {
     // Signup user and redirect to login
     $.post("/api/signup", {
       username: username,
+      password: password
     })
       .then(function () {
         window.location.replace("/login");
@@ -23,21 +24,24 @@ $(document).ready(function () {
     // Login event handler
     e.preventDefault();
     let user = {
-      username: signupInput.val().trim(),
+      username: usernameInput.val().trim(),
+      password: passwordInput.val().trim(),
     };
-    if(signupInput === '') {
+    if(user.username === '' || user.password === '') {
       return;
     }
-    signupUser(user.username);
-    signupInput.val("");
+    signupUser(user.username, user.password);
+    usernameInput.val("");
+    passwordInput.val("");
   });
 
   // LOGIN
   // ==================================================
-  function loginUser(username) {
+  function loginUser(username, password) {
     // Login user and redirect to home
     $.post("/api/login", {
-      user: username,
+      username: username,
+      password: password,
     })
       .then(function () {
         window.location.replace("/home");
@@ -51,13 +55,15 @@ $(document).ready(function () {
     // Login event handler
     e.preventDefault();
     let user = {
-      username: loginInput.val().trim(),
+      username: usernameInput.val().trim(),
+      password: passwordInput.val().trim()
     };
-    if (loginInput === '') {
+    if (user.username === '' || user.password === '') {
       return;
     }
-    loginUser(user.username);
-    loginInput.val("");
+    loginUser(user.username, user.password);
+    usernameInput.val("");
+    passwordInput.val("");
   });
 
   
