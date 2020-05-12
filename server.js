@@ -5,6 +5,8 @@
 // Dependencies
 // =============================================================
 const express = require("express");
+const session = require("express-session");
+const passport = require("./config/passport");
 const exphbs = require("express-handlebars");
 const db = require("./models");
 
@@ -32,7 +34,9 @@ app.set("view engine", "handlebars");
 // Routes
 // =============================================================
 require("./controllers/html-routes.js")(app);
-require("./controllers/api-routes.js")(app);
+require("./controllers/resources-api-routes.js")(app);
+require("./controllers/tags-api-routes.js")(app);
+require("./controllers/users-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

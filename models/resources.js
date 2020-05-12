@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1, 250],
       },
+      defaultValue: "No description"
     },
     link: {
       type: DataTypes.STRING,

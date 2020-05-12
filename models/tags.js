@@ -4,8 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     tagName: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
+    }
   });
 
   return Tags;
 };
+

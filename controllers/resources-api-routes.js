@@ -2,6 +2,8 @@
 // resources-api-routes.js - Routes for displaying and saving data to the resources table
 // *********************************************************************************
 
+// https://medium.com/@the_ozmic/how-to-create-many-to-many-relationship-using-sequelize-orm-postgres-on-express-677753a3edb5 
+
 // Dependencies
 // =============================================================
 const db = require("../models");
@@ -11,7 +13,7 @@ const db = require("../models");
 module.exports = function(app) {
   // Find all resources
   app.get("/api/resources", function(req, res) {
-    db.Resources.findAll({})
+    db.Resources.findAll()
       .then(function(data) {
         res.json(data);
       })
