@@ -1,23 +1,19 @@
 // *********************************************************************************
-// html-routes.js - Routes for sending users to the various html pages
+// api-routes.js - Routes for signup and login
 // *********************************************************************************
 
 // Dependencies
 // =============================================================
 const path = require("path");
-const authenitcate = require("../config/authenticate");
+const passport = require("../config/passport");
 
 
 // Routes
 // =============================================================
 module.exports = function (app) {
-  app.get("/", function (req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.render("index");
-    }
-    res.render("signup");
-  });
+    app.post("/api/login", function(req, res) {
+        res.json(req.user);
+      });
 
   app.get("/login", function (req, res) {
     if (req.user) {

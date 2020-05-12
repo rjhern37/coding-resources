@@ -34,6 +34,7 @@ app.set("view engine", "handlebars");
 // Routes
 // =============================================================
 require("./controllers/html-routes.js")(app);
+require("./controllers/api-routes.js")(app);
 require("./controllers/resources-api-routes.js")(app);
 require("./controllers/tags-api-routes.js")(app);
 require("./controllers/users-api-routes.js")(app);
