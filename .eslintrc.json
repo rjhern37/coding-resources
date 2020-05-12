@@ -18,7 +18,7 @@
       "no-empty-function": "off",
       "no-multi-spaces": "error",
       "no-mixed-spaces-and-tabs": "error",
-      "no-trailing-spaces": "error",
+      "no-trailing-spaces": "off",
       "default-case": "error",
       "no-fallthrough": "error",
       "no-unused-vars": "off",
@@ -27,7 +27,7 @@
       "camelcase": "error",
       "brace-style": "error",
       "indent": [
-          "error",
+          "off",
           2
       ],
       "quotes": [
