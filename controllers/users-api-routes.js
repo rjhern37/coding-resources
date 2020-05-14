@@ -35,4 +35,13 @@ module.exports = function (app) {
     req.logout('user');
     res.redirect("/login");
   });
+
+  // Delete user (server-side only)
+  app.delete("/api/users/delete", function (req, res) {
+    db.Users.destroy({
+      where: {
+        id: ""
+      }
+    });
+  });
 };

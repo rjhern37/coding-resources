@@ -8,7 +8,6 @@ const db = require("../models");
 const passport = require("../config/passport");
 const authenticate = require("../config/authenticate");
 
-
 // Routes
 // =============================================================
 module.exports = function (app) {
@@ -24,7 +23,7 @@ module.exports = function (app) {
       });
   });
 
-  // Save resource
+  // Create new User-Resource relation (Save resource to user)
   app.post("/api/save", authenticate, function (req, res) {
     db.UserResources.create({
       UserId: req.user.id,
@@ -36,6 +35,15 @@ module.exports = function (app) {
       .catch(function (err) {
         res.status(500).send(err);
       });
+  });
+
+  // Delete resource (server-side only)
+  app.delete("/api/resources/delete", function (req, res) {
+    db.Resources.destroy({
+      where: {
+        id: ""
+      }
+    });
   });
 
 };
