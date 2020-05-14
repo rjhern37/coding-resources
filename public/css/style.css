@@ -118,18 +118,26 @@ a.card-footer-item:hover {
   color: #f4f4f9;
 }
 
-#create-resource, #search-btn {
+#create-resource, #search-btn, #add-tag-btn, #added-tag-list .button, #create-tag-btn {
   background-color: #18dbd0;
   color: #f4f4f9;
   
 }
-#create-resource:hover, #search-btn:hover {
+#create-resource:hover, #search-btn:hover, #add-tag-btn:hover, #create-tag-btn:hover {
   background-color: #70e6df;
   color: #f4f4f9;
 }
 
 .field.has-addons {
   align-items: center;
+}
+
+.full-tag-list {
+  padding-top: 1rem;
+}
+
+.create-tag {
+  padding-bottom: 1rem;
 }
 
 .button {

@@ -28,10 +28,43 @@
                             placeholder="What does this learning resource cover?"></textarea>
                     </div>
                 </div>
+                <div class="field">
+                    <label class="label">Tags</label>
+                    <div id="added-tag-list" class="buttons">
+                    </div>
+                </div>
+                <div class="field has-addons full-tag-list">
+                    <div class="control is-expanded has-icons-left">
+                        <div class="select is-fullwidth">
+                            <select id="tag-select" name="tag" placeholder="search by tag">
+                                {{#each tags}}
+                                {{> tag}}
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="icon is-small is-left">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <button id="add-tag-btn" class="button"><strong>Add Tag</strong></button>
+                    </div>
+                </div>
+                <div class="field has-addons create-tag">
+                    <div class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Enter tag name">
+                        <div class="icon is-small is-left">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                    </div>
+                    <div class="control ">
+                        <button id="create-tag-btn" class="button"><strong>Create Tag</strong></button>
+                    </div>
+                </div>
                 <div class="field is-grouped">
                     <div class="control">
                         <a id="create-resource" class="button">
-                            <span><strong>Create</strong></span>
+                            <span><strong>Create Resource</strong></span>
                             <span class="icon">
                                 <i class="fas fa-plus"></i>
                             </span>
