@@ -110,6 +110,21 @@ a.card-footer-item:hover {
   color: #f4f4f9;
 }
 
+#create-resource {
+  background-color: #18dbd0;
+  color: #f4f4f9;
+  
+}
+#create-resource:hover {
+  background-color: #70e6df;
+  color: #f4f4f9;
+
+}
+
+.button {
+  border: none;
+}
+
 /* Hover.css - https://github.com/IanLunn/Hover/blob/master/css/hover.css */
 /* Sweep To Right */
 .hvr-sweep-to-right {

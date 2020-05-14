@@ -1,8 +1,12 @@
 $(document).ready(function () {
   const loginBtn = $("#login-btn");
   const signupBtn = $("#signup-btn");
+  const createBtn = $("#create-resource");
   const usernameInput = $("#username-input");
   const passwordInput = $("#password-input");
+  const nameInput = $("#name-input");
+  const linkInput = $("#link-input");
+  const descriptionInput = $("#description-input");
 
   // SIGNUP
   // ==================================================
@@ -64,6 +68,41 @@ $(document).ready(function () {
     loginUser(user.username, user.password);
     usernameInput.val("");
     passwordInput.val("");
+  });
+
+  // RESOURCES
+  // ==================================================
+  // CREATE
+  function createResource(name, description, link) {
+    // Signup user and redirect to login
+    $.post("/api/resources", {
+      resourceName: name,
+      description: description,
+      link: link
+    })
+      .then(function () {
+        window.location.replace("/api/resources");
+        // If there's an error, log the error
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  createBtn.on("click", function (e) {
+    // Login event handler
+    e.preventDefault();
+    let resource = {
+      name: nameInput.val().trim(),
+      link: linkInput.val().trim(),
+      description: descriptionInput.val().trim()
+    };
+    if (resource.name === '' || resource.link === '' || resource.description === '') {
+      return;
+    }
+    createResource(resource.name, resource.description, resource.link);
+      nameInput.val(""),
+      linkInput.val(""),
+      descriptionInput.val("");
   });
 
   
