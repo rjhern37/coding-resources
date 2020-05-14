@@ -133,11 +133,11 @@ a.card-footer-item:hover {
 }
 
 .full-tag-list {
-  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .create-tag {
-  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 .button {
