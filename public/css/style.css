@@ -20,6 +20,14 @@ body {
   padding-bottom: 1rem;
 }
 
+section.section {
+  padding-top: 0;
+}
+
+section.section.pt-3 {
+  padding-top: 3rem;
+}
+
 .page-logo {
   font-size: 2rem;
 }
@@ -118,6 +126,10 @@ a.card-footer-item:hover {
 #create-resource:hover, #search-btn:hover {
   background-color: #70e6df;
   color: #f4f4f9;
+}
+
+.field.has-addons {
+  align-items: center;
 }
 
 .button {

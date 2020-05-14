@@ -47,19 +47,19 @@ module.exports = function (app) {
   });
 
   // HOME PAGE
-  app.get("/", authenticate, function (req, res) {
-    // Get and display all resources
-    db.Resources.findAll({})
-    .then(function(data) {
-      let resources = data.map(resource => resource.dataValues);
-      res.render("index", {
-        resources: resources
-      });
-    })
-    .catch(function(err) {
-      res.status(500).send(err);
-    });
-  });
+  // app.get("/", authenticate, function (req, res) {
+  //   // Get and display all resources
+  //   db.Resources.findAll({})
+  //   .then(function(data) {
+  //     let resources = data.map(resource => resource.dataValues);
+  //     res.render("index", {
+  //       resources: resources
+  //     });
+  //   })
+  //   .catch(function(err) {
+  //     res.status(500).send(err);
+  //   });
+  // });
 
   // USER SAVED RESOURCES PAGE
   app.get("/saved", authenticate, async function(req, res) {
@@ -78,7 +78,7 @@ module.exports = function (app) {
       let resources = result.Resources.map(
         (resource) => resource.dataValues
       );
-      res.render("index", {
+      res.render("saved", {
         resources: resources,
       });
     } catch(err) {
@@ -93,17 +93,44 @@ module.exports = function (app) {
   });
 
   // SEARCH RESOURCES PAGE
-  app.get("/search", authenticate, function (req, res) {
-    db.Tags.findAll()
-    .then(function(data) {
-      let tags = data.map(tag => tag.dataValues);
-      res.render("search", {
-        tags: tags
+  app.get("/", authenticate, async function (req, res) {
+    try {
+      let tags = await db.Tags.findAll().map(tag => tag.dataValues);
+      let resources = await db.Resources.findAll().map(resource => resource.dataValues);
+      res.render("index", {
+        tags: tags,
+        resources: resources
       });
-    })
-    .catch(function(err) {
+    } catch(err) {
       res.status(500).send(err);
-    });
+    }
+  });
+
+  // SEARCH RESOURCES BY TAGNAME
+  app.get("/search/:tagId", authenticate, async function (req, res) {
+    try {
+      let tags = await db.Tags.findAll().map(tag => tag.dataValues);
+      let [results] = await db.Tags.findAll({
+        where: {
+          id: +req.params.tagId,
+        },
+        include: [
+          {
+            model: db.Resources,
+            require: true,
+          }
+        ],
+      });
+      let resources = results.Resources.map(
+        (resource) => resource.dataValues
+      );
+      res.render("index", {
+        tags: tags,
+        resources: resources
+      });
+    } catch(err) {
+      res.status(500).send(err);
+    }
   });
 
 
