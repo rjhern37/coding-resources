@@ -19,7 +19,14 @@ module.exports = function (app) {
       res.redirect("/");
     }
     // Route to signup if logged out
-    res.render("signup");
+    res.render("signup", {
+      title: "Sign Up",
+      btnId: "signup-btn",
+      btnName: "Sign Up",
+      routeMsg: "Already have a username?",
+      route: "/login",
+      routeName: "Login",
+    });
   });
 
   // LOGIN PAGE
@@ -29,7 +36,14 @@ module.exports = function (app) {
       res.redirect("/");
     }
     // Route to signup if logged out
-    res.render("login");
+    res.render("login", {
+      title: "Login",
+      btnId: "login-btn",
+      btnName: "Login",
+      routeMsg: "Don't have a username?",
+      route: "/signup",
+      routeName: "Sign up",
+    });
   });
 
   // HOME PAGE
@@ -49,7 +63,6 @@ module.exports = function (app) {
 
   // USER SAVED RESOURCES PAGE
   app.get("/saved", authenticate, async function(req, res) {
-    console.log(req.user);
     try {
       let [result] = await db.Users.findAll({
         where: {

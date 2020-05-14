@@ -1,0 +1,32 @@
+<div class="container form-size">
+        <div class="columns is-centered">
+            <div class="column form-container">
+                <h3 class="is-size-2 form-title">{{title}}</h3>
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="username-input" class="input" type="text" placeholder="Enter username">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input id="password-input" class="input" type="password" placeholder="Password">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control has-text-centered">
+                        <button id="{{btnId}}" class="button is-link"><strong>{{btnName}}</strong></button>
+                    </div>
+                </div>
+                <div class="field is-grouped redirect-link">
+                    <p>{{routeMsg}} <a class="is-link" href="{{route}}">{{routeName}} here!</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
