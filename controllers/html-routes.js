@@ -8,14 +8,12 @@ const path = require("path");
 const db = require("../models");
 const authenticate = require("../config/authenticate");
 
-
 // Routes
 // =============================================================
 module.exports = function (app) {
   // SIGNUP PAGE
-  // Route to home page if logged in
   app.get("/signup", function (req, res) {
-    if(req.user) {
+    if (req.user) {
       res.redirect("/");
     }
     // Route to signup if logged out
@@ -30,9 +28,8 @@ module.exports = function (app) {
   });
 
   // LOGIN PAGE
-  // Route to home page if logged in
   app.get("/login", function (req, res) {
-    if(req.user) {
+    if (req.user) {
       res.redirect("/");
     }
     // Route to signup if logged out
@@ -47,22 +44,23 @@ module.exports = function (app) {
   });
 
   // HOME PAGE
-  // app.get("/", authenticate, function (req, res) {
-  //   // Get and display all resources
-  //   db.Resources.findAll({})
-  //   .then(function(data) {
-  //     let resources = data.map(resource => resource.dataValues);
-  //     res.render("index", {
-  //       resources: resources
-  //     });
-  //   })
-  //   .catch(function(err) {
-  //     res.status(500).send(err);
-  //   });
-  // });
+  app.get("/", authenticate, async function (req, res) {
+    try {
+      let tags = await db.Tags.findAll().map((tag) => tag.dataValues);
+      let resources = await db.Resources.findAll().map(
+        (resource) => resource.dataValues
+      );
+      res.render("index", {
+        tags: tags,
+        resources: resources,
+      });
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
 
   // USER SAVED RESOURCES PAGE
-  app.get("/saved", authenticate, async function(req, res) {
+  app.get("/saved", authenticate, async function (req, res) {
     try {
       let [result] = await db.Users.findAll({
         where: {
@@ -75,33 +73,23 @@ module.exports = function (app) {
           },
         ],
       });
-      let resources = result.Resources.map(
-        (resource) => resource.dataValues
-      );
+      let resources = result.Resources.map((resource) => resource.dataValues);
       res.render("saved", {
         resources: resources,
       });
-    } catch(err) {
+    } catch (err) {
       res.status(500).send(err);
     }
   });
 
-
   // CREATE RESOURCE PAGE
-  app.get("/create", authenticate, function (req, res) {
-      res.render("create");
-  });
-
-  // SEARCH RESOURCES PAGE
-  app.get("/", authenticate, async function (req, res) {
+  app.get("/create", authenticate, async function (req, res) {
     try {
-      let tags = await db.Tags.findAll().map(tag => tag.dataValues);
-      let resources = await db.Resources.findAll().map(resource => resource.dataValues);
-      res.render("index", {
+      let tags = await db.Tags.findAll().map((tag) => tag.dataValues);
+      res.render("create", {
         tags: tags,
-        resources: resources
       });
-    } catch(err) {
+    } catch (err) {
       res.status(500).send(err);
     }
   });
@@ -109,7 +97,7 @@ module.exports = function (app) {
   // SEARCH RESOURCES BY TAGNAME
   app.get("/search/:tagId", authenticate, async function (req, res) {
     try {
-      let tags = await db.Tags.findAll().map(tag => tag.dataValues);
+      let tags = await db.Tags.findAll().map((tag) => tag.dataValues);
       let [results] = await db.Tags.findAll({
         where: {
           id: +req.params.tagId,
@@ -118,20 +106,16 @@ module.exports = function (app) {
           {
             model: db.Resources,
             require: true,
-          }
+          },
         ],
       });
-      let resources = results.Resources.map(
-        (resource) => resource.dataValues
-      );
+      let resources = results.Resources.map((resource) => resource.dataValues);
       res.render("index", {
         tags: tags,
-        resources: resources
+        resources: resources,
       });
-    } catch(err) {
+    } catch (err) {
       res.status(500).send(err);
     }
   });
-
-
 };
