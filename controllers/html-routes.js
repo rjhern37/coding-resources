@@ -92,5 +92,19 @@ module.exports = function (app) {
       res.render("create");
   });
 
+  // SEARCH RESOURCES PAGE
+  app.get("/search", authenticate, function (req, res) {
+    db.Tags.findAll()
+    .then(function(data) {
+      let tags = data.map(tag => tag.dataValues);
+      res.render("search", {
+        tags: tags
+      });
+    })
+    .catch(function(err) {
+      res.status(500).send(err);
+    });
+  });
+
 
 };
