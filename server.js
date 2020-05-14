@@ -8,14 +8,16 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("./config/passport");
 const exphbs = require("express-handlebars");
-const db = require("./models");
+
 
 // Setup Express
 // =============================================================
-const app = express();
+
 const PORT = process.env.PORT || 8080;
+const db = require("./models");
 
 // Express - data parsing
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -23,7 +25,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Express - enable sessions
-app.use(session({ secret: "super secret", resave: true, saveUninitialized: true }));
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -40,7 +42,7 @@ require("./controllers/users-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

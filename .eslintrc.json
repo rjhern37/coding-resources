@@ -5,6 +5,10 @@
       "node": true,
       "es6": true
   },
+  "parserOptions": {
+    // Required for certain syntax usages
+    "ecmaVersion": 2018
+  },
   "rules": {
       "no-duplicate-case":"error",
       "no-empty":"error",

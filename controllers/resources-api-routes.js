@@ -7,6 +7,39 @@
 // Dependencies
 // =============================================================
 const db = require("../models");
+const passport = require("../config/passport");
+const authenticate = require("../config/authenticate");
+
+
+
+// db.Resources.findAll({})
+//       .then(function (data) {
+//         let resources = data.map((resource) => resource.dataValues);
+//         console.log(resources);
+//       })
+
+// db.Resources.findAll({}).then(function (data) {
+//   let resources = data.map((resource) => resource.dataValues);
+//   console.log(resources);
+// });
+
+// (async function () {
+//   let [result] = await db.Users.findAll({
+//     where: {
+//       id: 4,
+//     },
+//     include: [
+//       {
+//         model: db.Resources,
+//         required: true,
+//       },
+//     ],
+//   });
+//   let resourcesData = await result.Resources.map(
+//     (resource) => resource.dataValues
+//   );
+//   console.log(resourcesData);
+// })();
 
 // Routes
 // =============================================================
@@ -26,18 +59,33 @@ module.exports = function (app) {
   });
 
   // Find resource by username
-  app.get("/api/saved", function (req, res) {
-    db.Users.findAll({
-      where: {
-        id: req.headers["x-user-id"]
-      },
-    })
-      .then(function (data) {
-        res.json(data);
-      })
-      .catch(function (err) {
-        res.status(500).send(err);
+  app.get("/api/findSaved", authenticate, async function(req, res) {
+    console.log(req.user);
+    try {
+      let [result] = await db.Users.findAll({
+        where: {
+          id: req.user.id,
+        },
+        include: [
+          {
+            model: db.Resources,
+            require: true,
+          },
+        ],
       });
+  
+      let resources = result.Resources.map(
+        (resource) => resource.dataValues
+      );
+      // console.log(resources);
+  
+      res.render("index", {
+        resources: resources,
+      });
+    } catch(err) {
+      res.status(500).send(err);
+    }
+    
   });
 
   // Find resources by tag name
@@ -76,9 +124,9 @@ module.exports = function (app) {
   });
 
   // Save resource
-  app.post("/api/save", function (req, res) {
+  app.post("/api/save", authenticate, function (req, res) {
     db.UserResources.create({
-      UserId: req.headers["x-user-id"],
+      UserId: req.user.id,
       ResourceId: req.body.ResourceId,
     })
       .then(function (data) {
