@@ -2,7 +2,6 @@ $(document).ready(function () {
   const loginBtn = $("#login-btn");
   const signupBtn = $("#signup-btn");
   const createBtn = $("#create-resource");
-  const saveBtn = $(".save-resource");
   const usernameInput = $("#username-input");
   const passwordInput = $("#password-input");
   const nameInput = $("#name-input");
@@ -51,7 +50,7 @@ $(document).ready(function () {
       .then(function (data) {
         localStorage.setItem("userId", data.id);
         // Save user ID to local storage
-        window.location.replace("/home");
+        window.location.replace("/");
       })
       .catch(function (err) {
         console.log(err);
@@ -74,16 +73,16 @@ $(document).ready(function () {
 
   // RESOURCES
   // ==================================================
-  // CREATE
+  // Create new resource
   function createResource(name, description, link) {
     // Signup user and redirect to login
-    $.post("/api/resources", {
+    $.post("/api/create", {
       resourceName: name,
       description: description,
       link: link,
     })
       .then(function () {
-        window.location.replace("/api/resources");
+        window.location.replace("/");
         // If there's an error, log the error
       })
       .catch(function (err) {
@@ -108,13 +107,13 @@ $(document).ready(function () {
     createResource(resource.name, resource.description, resource.link);
     nameInput.val(""), linkInput.val(""), descriptionInput.val("");
   });
-  // SAVE
+  // Save resource to user saved resources
   function saveResource(resourceId) {
     $.post("/api/save", {
       ResourceId: resourceId,
     })
       .then(function () {
-        window.location.replace("/api/findSaved");
+        window.location.replace("/saved");
       })
       .catch(function (err) {
         console.log(err);
