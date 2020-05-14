@@ -48,8 +48,6 @@ $(document).ready(function () {
       password: password,
     })
       .then(function (data) {
-        localStorage.setItem("userId", data.id);
-        // Save user ID to local storage
         window.location.replace("/");
       })
       .catch(function (err) {
