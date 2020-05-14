@@ -8,16 +8,24 @@ const db = require("../models");
 
 // https://medium.com/@hz.bird55/using-sequelize-bulkcreate-method-with-mysql-database-1ebd1bae2109
 
-// db.Tags.findAll({
-//   where: {id: 1},
-//   include: [{
-//     model: db.Resources,
-//     required: true
-//   }]
-// })
-// .then(function(data) {
-//   console.log(data);
+// (async function() {
+//   let [ result ] = await db.Tags.findAll({
+//     where: {id: 1},
+//     include: [{
+//       model: db.Resources,
+//       required: true
+//     }]
+//   });
+//   let myArr = result.Resources.map(resource => resource.dataValues);
+//   console.log(myArr);
+// })();
+
+
+// db.ResourceTags.create({
+//   ResourceId: 1,
+//   TagId: 1
 // });
+
 
 // Routes
 // =============================================================

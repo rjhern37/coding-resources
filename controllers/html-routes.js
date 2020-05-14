@@ -5,6 +5,7 @@
 // Dependencies
 // =============================================================
 const path = require("path");
+const db = require("../models");
 const authenitcate = require("../config/authenticate");
 
 
@@ -27,7 +28,16 @@ module.exports = function (app) {
   });
 
   app.get("/home", function (req, res) {
-      res.render("index");
+    db.Resources.findAll({})
+    .then(function(data) {
+      let resources = data.map(resource => resource.dataValues);
+      res.render("index", {
+        resources: resources
+      });
+    })
+    .catch(function(err) {
+      res.status(500).send(err);
+    });
   });
 
   app.get("/cms", function (req, res) {
