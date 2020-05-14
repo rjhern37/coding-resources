@@ -15,9 +15,17 @@ body {
 .navbar {
   background-color: #f4f4f9;
   border-bottom: solid 6px #18dbd0;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+section.section {
+  padding-top: 0;
+}
+
+section.section.pt-3 {
+  padding-top: 3rem;
 }
 
 .page-logo {
@@ -110,14 +118,18 @@ a.card-footer-item:hover {
   color: #f4f4f9;
 }
 
-#create-resource {
+#create-resource, #search-btn {
   background-color: #18dbd0;
   color: #f4f4f9;
   
 }
-#create-resource:hover {
+#create-resource:hover, #search-btn:hover {
   background-color: #70e6df;
   color: #f4f4f9;
+}
+
+.field.has-addons {
+  align-items: center;
 }
 
 .button {
@@ -171,7 +183,7 @@ a.card-footer-item:hover {
 
 @media screen and (max-width: 600px) {
   .navbar {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
   .form-title {
     margin-bottom: 1rem;

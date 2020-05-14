@@ -2,11 +2,13 @@ $(document).ready(function () {
   const loginBtn = $("#login-btn");
   const signupBtn = $("#signup-btn");
   const createBtn = $("#create-resource");
+  const searchBtn = $("#search-btn");
   const usernameInput = $("#username-input");
   const passwordInput = $("#password-input");
   const nameInput = $("#name-input");
   const linkInput = $("#link-input");
   const descriptionInput = $("#description-input");
+  const tagSelect = $("#tag-select");
 
   // SIGNUP
   // ==================================================
@@ -121,6 +123,21 @@ $(document).ready(function () {
     e.preventDefault();
     let resourceId = +$(this).attr("data-id");
     saveResource(resourceId);
+  });
+  // Search resources by tag name
+  function findResourcesByTag(tagId) {
+    $.get("/search/" + tagId)
+      .then(function () {
+        window.location.replace("/search/" + tagId);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  searchBtn.on("click", function (e) {
+    e.preventDefault();
+    let tagId = tagSelect.val().trim();
+    findResourcesByTag(tagId);
   });
 
   

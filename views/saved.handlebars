@@ -1,0 +1,12 @@
+{{>navbar-full}}
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                {{#each resources}}
+                {{> view-resource}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>

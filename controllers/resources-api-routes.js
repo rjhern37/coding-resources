@@ -13,30 +13,6 @@ const authenticate = require("../config/authenticate");
 // =============================================================
 module.exports = function (app) {
 
-  // Find resources by tag name
-  app.get("/api/resources/:tagName", function (req, res) {
-    db.Resources.findAll({
-      where: {
-        tagName: req.params.tagName,
-      },
-      include: [
-        {
-          model: db.Tags,
-          as: "Tags",
-        },
-        {
-          model: db.ResourceTags,
-        },
-      ],
-    })
-      .then(function (data) {
-        res.json(data);
-      })
-      .catch(function (err) {
-        res.status(500).send(err);
-      });
-  });
-
   // Create new resource
   app.post("/api/create", function (req, res) {
     db.Resources.create(req.body)

@@ -1,6 +1,24 @@
 {{>navbar-full}}
 <section class="section">
     <div class="container">
+        <div class="field has-addons">
+            <div class="control is-expanded has-icons-left">
+                <div class="select is-fullwidth">
+                    <select id="tag-select" name="tag" placeholder="search by tag">
+                        <option value="0" selected disabled>Search by tags</option>
+                        {{#each tags}}
+                        {{> tag}}
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="icon is-small is-left">
+                    <i class="fas fa-tag"></i>
+                </div>
+            </div>
+            <div class="control">
+                <button id="search-btn" class="button"><strong>Search</strong></button>
+            </div>
+        </div>
         <div class="columns">
             <div class="column">
                 {{#each resources}}

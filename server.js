@@ -8,6 +8,7 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("./config/passport");
 const exphbs = require("express-handlebars");
+const chalk = require("chalk");
 
 
 // Setup Express
@@ -44,6 +45,6 @@ require("./controllers/users-api-routes.js")(app);
 // =============================================================
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+    console.log(chalk.cyan(`App listening at http://localhost:${PORT}/`));
   });
 });
