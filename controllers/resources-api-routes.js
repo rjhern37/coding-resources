@@ -24,7 +24,7 @@ module.exports = function (app) {
   });
 
   // Create new User-Resource relation (Save resource to user)
-  app.post("/api/save", authenticate, function (req, res) {
+  app.post("/api/resources/save", authenticate, function (req, res) {
     db.UserResources.create({
       UserId: req.user.id,
       ResourceId: req.body.ResourceId,

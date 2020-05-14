@@ -11,13 +11,13 @@ const passport = require("../config/passport");
 // =============================================================
 module.exports = function (app) {
   // Login user
-  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+  app.post("/api/users/login", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
     // res.render("index");
   });
 
   // Create new user
-  app.post("/api/signup", function (req, res) {
+  app.post("/api/users/signup", function (req, res) {
     db.Users.create({
       username: req.body.username,
       password: req.body.password

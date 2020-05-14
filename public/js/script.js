@@ -1,26 +1,12 @@
 $(document).ready(function () {
-  const loginBtn = $("#login-btn");
-  const signupBtn = $("#signup-btn");
-  const createBtn = $("#create-resource");
-  const searchBtn = $("#search-btn");
-  const addTagBtn = $("#add-tag-btn");
-  const createTagBtn = $("#create-tag-btn");
-  const usernameInput = $("#username-input");
-  const passwordInput = $("#password-input");
-  const nameInput = $("#name-input");
-  const linkInput = $("#link-input");
-  const descriptionInput = $("#description-input");
-  const tagSelect = $("#tag-select");
-  const addedTagList = $("#added-tag-list");
-  const createTagInput = $("#create-tag-input");
-
-
+  
+  // ==================================================
   // USER
   // ==================================================
   // Sign up
   function signupUser(username, password) {
     // Signup user and redirect to login
-    $.post("/api/signup", {
+    $.post("/api/users/signup", {
       username: username,
       password: password,
     })
@@ -32,24 +18,24 @@ $(document).ready(function () {
         console.log(err);
       });
   }
-  signupBtn.on("click", function (e) {
+  $("#signup-btn").on("click", function (e) {
     // Login event handler
     e.preventDefault();
     let user = {
-      username: usernameInput.val().trim(),
-      password: passwordInput.val().trim(),
+      username: $("#username-input").val().trim(),
+      password: $("#password-input").val().trim(),
     };
     if (user.username === "" || user.password === "") {
       return;
     }
     signupUser(user.username, user.password);
-    usernameInput.val("");
-    passwordInput.val("");
+    $("#username-input").val("");
+    $("#password-input").val("");
   });
   // Login
   function loginUser(username, password) {
     // Login user and redirect to home
-    $.post("/api/login", {
+    $.post("/api/users/login", {
       username: username,
       password: password,
     })
@@ -60,21 +46,22 @@ $(document).ready(function () {
         console.log(err);
       });
   }
-  loginBtn.on("click", function (e) {
+  $("#login-btn").on("click", function (e) {
     // Login event handler
     e.preventDefault();
     let user = {
-      username: usernameInput.val().trim(),
-      password: passwordInput.val().trim(),
+      username: $("#username-input").val().trim(),
+      password: $("#password-input").val().trim(),
     };
     if (user.username === "" || user.password === "") {
       return;
     }
     loginUser(user.username, user.password);
-    usernameInput.val("");
-    passwordInput.val("");
+    $("#username-input").val("");
+    $("#password-input").val("");
   });
 
+  // ==================================================
   // RESOURCES
   // ==================================================
   // Create new resource
@@ -92,13 +79,13 @@ $(document).ready(function () {
         console.log(err);
       });
   }
-  createBtn.on("click", function (e) {
+  $("#create-resource").on("click", function (e) {
     // Login event handler
     e.preventDefault();
     let resource = {
-      name: nameInput.val().trim(),
-      link: linkInput.val().trim(),
-      description: descriptionInput.val().trim(),
+      name: $("#name-input").val().trim(),
+      link: $("#link-input").val().trim(),
+      description: $("#description-input").val().trim(),
     };
     if (
       resource.name === "" ||
@@ -108,11 +95,11 @@ $(document).ready(function () {
       return;
     }
     createResource(resource.name, resource.description, resource.link);
-    nameInput.val(""), linkInput.val(""), descriptionInput.val("");
+    $("#name-input").val(""), $("#link-input").val(""), $("#description-input").val("");
   });
   // Save resource to user saved resources
   function saveResource(resourceId) {
-    $.post("/api/save", {
+    $.post("/api/resources/save", {
       ResourceId: resourceId,
     })
       .then(function () {
@@ -137,23 +124,24 @@ $(document).ready(function () {
         console.log(err);
       });
   }
-  searchBtn.on("click", function (e) {
+  $("#search-btn").on("click", function (e) {
     e.preventDefault();
-    let tagId = tagSelect.val().trim();
+    let tagId = $("#tag-select").val().trim();
     findResourcesByTag(tagId);
   });
   // Add tag to new resource
   function addTag(tagId, tagName) {
     let tag = `<button class="button" data-id="${tagId}">${tagName}</button>`;
-    addedTagList.append(tag);
+    $("#added-tag-list").append(tag);
   }
-  addTagBtn.on("click", function (e) {
+  $("#add-tag-btn").on("click", function (e) {
     e.preventDefault();
-    let tagId = tagSelect.val();
+    let tagId = $("#tag-select").val();
     let tagName = $("#tag-select option:selected").text();
     addTag(tagId, tagName);
   });
 
+  // ==================================================
   // TAGS
   // ==================================================
   // Create tag 
@@ -170,9 +158,9 @@ $(document).ready(function () {
         console.log(err);
       });
   }
-  createTagBtn.on("click", function (e) {
+  $("#create-tag-btn").on("click", function (e) {
     e.preventDefault();
-    let tagName = createTagInput.val().trim();
+    let tagName = $("#create-tag-input").val().trim();
     createTag(tagName);
   });
 
