@@ -87,11 +87,11 @@ a.navbar-item:hover {
 }
 
 .card-header {
-  border-left: solid 6px #18dbd0;
+  background-color: #18dbd0;
 }
 
 .card-header-title a {
-  color: #4a4a4a;
+  color: #f4f4f9;
   font-size: 1.5rem;
   font-weight: 500;
 }
