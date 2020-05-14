@@ -1,7 +1,3 @@
-$.ajaxSetup({
-  headers: { "x-user-id": localStorage.getItem("userId") },
-});
-
 $(document).ready(function () {
   const loginBtn = $("#login-btn");
   const signupBtn = $("#signup-btn");
@@ -118,7 +114,7 @@ $(document).ready(function () {
       ResourceId: resourceId,
     })
       .then(function () {
-        window.location.replace("/api/save");
+        window.location.replace("/api/findSaved");
       })
       .catch(function (err) {
         console.log(err);
@@ -129,6 +125,8 @@ $(document).ready(function () {
     let resourceId = +$(this).attr("data-id");
     saveResource(resourceId);
   });
+
+  
 
   // var nameInput = $("#line-name")
   // //adding more var

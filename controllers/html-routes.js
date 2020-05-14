@@ -6,7 +6,7 @@
 // =============================================================
 const path = require("path");
 const db = require("../models");
-const authenitcate = require("../config/authenticate");
+const authenticate = require("../config/authenticate");
 
 
 // Routes
@@ -43,5 +43,6 @@ module.exports = function (app) {
   app.get("/cms", function (req, res) {
       res.render("cms");
   });
+
 
 };
