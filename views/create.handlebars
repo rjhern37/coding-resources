@@ -3,12 +3,42 @@
     <div class="container form-size">
         <div class="columns">
             <div class="column form-container">
-                {{> create-resource}}
+                <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control has-icons-left">
+                        <input id="name-input" class="input" type="text" placeholder="Resource name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-bookmark"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Link</label>
+                    <div class="control has-icons-left">
+                        <input id="link-input" class="input" type="text" placeholder="Enter url">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-link"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <textarea id="description-input" class="textarea"
+                            placeholder="What does this learning resource cover?"></textarea>
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <a id="create-resource" class="button">
+                            <span><strong>Create</strong></span>
+                            <span class="icon">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-
-  
-
