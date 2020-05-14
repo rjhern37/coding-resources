@@ -14,7 +14,7 @@ const authenticate = require("../config/authenticate");
 module.exports = function (app) {
 
   // Create new resource
-  app.post("/api/create", function (req, res) {
+  app.post("/api/resources/create", function (req, res) {
     db.Resources.create(req.body)
       .then(function (data) {
         res.json(data);

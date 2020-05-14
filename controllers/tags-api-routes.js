@@ -22,7 +22,7 @@ module.exports = function(app) {
   });
 
   // Create new tag
-  app.post("/api/tags", function(req, res) {
+  app.post("/api/tags/create", function(req, res) {
     db.Tags.create(req.body)
       .then(function(data) {
         res.json(data);
