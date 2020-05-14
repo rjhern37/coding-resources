@@ -2,8 +2,6 @@
 // users-api-routes.js - Routes for displaying and saving data to the users table
 // *********************************************************************************
 
-// https://stackoverflow.com/questions/16434893/node-express-passport-req-user-undefined
-
 // Dependencies
 // =============================================================
 const db = require("../models");
@@ -24,8 +22,8 @@ module.exports = function (app) {
       username: req.body.username,
       password: req.body.password
     })
-      .then(function () {
-        res.render("login");
+      .then(function (data) {
+        res.json(data);
       })
       .catch(function (err) {
         res.status(401).json(err);
@@ -34,7 +32,7 @@ module.exports = function (app) {
 
   // Logout user
   app.get("/logout", function(req, res) {
-    req.logout();
+    req.logout('user');
     res.redirect("/login");
   });
 };
