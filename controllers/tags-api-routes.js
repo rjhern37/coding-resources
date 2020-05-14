@@ -5,8 +5,7 @@
 // Dependencies
 // =============================================================
 const db = require("../models");
-
-
+  
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -30,6 +29,15 @@ module.exports = function(app) {
       .catch(function(err) {
         res.status(500).send(err);
       });
+  });
+
+  // Delete tag (server-side only)
+  app.delete("/api/tags/delete", function (req, res) {
+    db.Tags.destroy({
+      where: {
+        id: ""
+      }
+    });
   });
 
 };
