@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  
   // ==================================================
   // USER
   // ==================================================
@@ -64,6 +63,23 @@ $(document).ready(function () {
   // ==================================================
   // RESOURCES
   // ==================================================
+  function tagResource(name) {
+    $.get("/api/resources/" + name)
+    .then(function (data) {
+      let resourceId = data.id;
+      // Tag Array - https://stackoverflow.com/questions/43434561/retrieving-data-attributes-of-all-child-elements-in-jquery
+      var tagIdArr = [];
+      var children = $("#added-tag-list").children(); // Get all added tags
+      children.each(function (i, tag) { // loop over them
+        // get id # and push to array
+        tagIdArr.push($(tag).data("id"));
+      });
+      $.post("api/resource/tags", {
+          resourceId: resourceId,
+          tags: tagIdArr
+      });
+    });
+  }
   // Create new resource
   function createResource(name, description, link) {
     $.post("/api/resources/create", {
@@ -72,6 +88,7 @@ $(document).ready(function () {
       link: link,
     })
       .then(function () {
+        tagResource(name);
         window.location.replace("/");
         // If there's an error, log the error
       })
@@ -95,11 +112,13 @@ $(document).ready(function () {
       return;
     }
     createResource(resource.name, resource.description, resource.link);
-    $("#name-input").val(""), $("#link-input").val(""), $("#description-input").val("");
+    $("#name-input").val(""),
+      $("#link-input").val(""),
+      $("#description-input").val("");
   });
   // Save resource to user saved resources
   function saveResource(resourceId) {
-    $.post("/api/resources/save", {
+    $.post("/api/users/save", {
       ResourceId: resourceId,
     })
       .then(function () {
@@ -144,10 +163,10 @@ $(document).ready(function () {
   // ==================================================
   // TAGS
   // ==================================================
-  // Create tag 
+  // Create tag
   function createTag(tagName) {
     $.post("/api/tags/create", {
-      tagName: tagName
+      tagName: tagName,
     })
       .then(function () {
         window.location.replace("/create");
@@ -163,5 +182,4 @@ $(document).ready(function () {
     let tagName = $("#create-tag-input").val().trim();
     createTag(tagName);
   });
-
 });
