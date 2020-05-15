@@ -6,6 +6,7 @@
 // =============================================================
 const db = require("../models");
 const passport = require("../config/passport");
+const authenticate = require("../config/authenticate");
 
 // Routes
 // =============================================================
@@ -27,6 +28,20 @@ module.exports = function (app) {
       })
       .catch(function (err) {
         res.status(401).json(err);
+      });
+  });
+
+  // Create new User-Resource relation (Save resource to user)
+  app.post("/api/users/save", authenticate, function (req, res) {
+    db.UserResources.create({
+      UserId: req.user.id,
+      ResourceId: req.body.ResourceId,
+    })
+      .then(function (data) {
+        res.json(data);
+      })
+      .catch(function (err) {
+        res.status(500).send(err);
       });
   });
 

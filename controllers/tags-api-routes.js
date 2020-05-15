@@ -5,6 +5,8 @@
 // Dependencies
 // =============================================================
 const db = require("../models");
+const passport = require("../config/passport");
+const authenticate = require("../config/authenticate");
   
 // Routes
 // =============================================================
