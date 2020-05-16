@@ -41,6 +41,7 @@ require("./controllers/resources-api-routes.js")(app);
 require("./controllers/tags-api-routes.js")(app);
 require("./controllers/users-api-routes.js")(app);
 
+
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync().then(function() {
