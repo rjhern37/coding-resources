@@ -54,8 +54,7 @@ module.exports = function (app) {
         ResourceId: resourceId,
         TagId: +tag
       })
-        .then(function (data) {
-          res.json(data);
+        .then(function () {
         })
         .catch(function (err) {
           res.status(500).send(err);
