@@ -1,24 +1,22 @@
-
 <div data-aos="fade-right">
-<div class="card">
-    <header class="card-header">
-        <p class="card-header-title">
-            <a href="{{link}}" target="_blank">{{resourceName}}</a>
-        </p>
-    </header>
-    <div class="card-content">
-        <div class="content">
-            <p>{{description}}</p>
-            <br>
-            <p>Tags</p>
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                <a href="{{link}}" target="_blank">{{resourceName}}</a>
+            </p>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                <p>{{description}}</p>
+            </div>
         </div>
+        <footer class="card-footer">
+            {{#if saved}}
+            <a data-id="{{id}}"
+                class="remove-saved-resource card-footer-item hvr-sweep-to-right"><strong>Remove</strong></a>
+            {{else}}
+            <a data-id="{{id}}" class="save-resource card-footer-item hvr-sweep-to-right"><strong>Save</strong></a>
+            {{/if}}
+        </footer>
     </div>
-    <footer class="card-footer">
-        {{#if saved}}
-        <a data-id="{{id}}" class="remove-saved-resource card-footer-item hvr-sweep-to-right"><strong>Remove</strong></a>
-        {{else}}
-        <a data-id="{{id}}" class="save-resource card-footer-item hvr-sweep-to-right"><strong>Save</strong></a>
-        {{/if}}
-    </footer>
-</div>
 </div>

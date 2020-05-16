@@ -31,6 +31,7 @@ $(document).ready(function () {
     $("#username-input").val("");
     $("#password-input").val("");
   });
+  
   // Login
   function loginUser(username, password) {
     // Login user and redirect to home
@@ -81,6 +82,7 @@ $(document).ready(function () {
       });
     });
   }
+
   // Create new resource
   function createResource(name, description, link) {
     $.post("/api/resources/create", {
@@ -117,6 +119,7 @@ $(document).ready(function () {
       $("#link-input").val(""),
       $("#description-input").val("");
   });
+
   // Save resource to user saved resources
   function saveResource(resourceId) {
     $.post("/api/users/save", {
@@ -134,6 +137,7 @@ $(document).ready(function () {
     let resourceId = +$(this).attr("data-id");
     saveResource(resourceId);
   });
+
   // Delete resource from user saved resources
   function removeSavedResource(resourceId) {
     $.post("/api/users/remove-resource", {
@@ -151,6 +155,7 @@ $(document).ready(function () {
     let resourceId = +$(this).attr("data-id");
     removeSavedResource(resourceId);
   });
+
   // Search resources by tag name
   function findResourcesByTag(tagId) {
     $.get("/search/" + tagId)
@@ -165,17 +170,6 @@ $(document).ready(function () {
     e.preventDefault();
     let tagId = $("#tag-select").val().trim();
     findResourcesByTag(tagId);
-  });
-  // Add tag to new resource
-  function addTag(tagId, tagName) {
-    let tag = `<button class="button" data-id="${tagId}">${tagName}</button>`;
-    $("#added-tag-list").append(tag);
-  }
-  $("#add-tag-btn").on("click", function (e) {
-    e.preventDefault();
-    let tagId = $("#tag-select").val();
-    let tagName = $("#tag-select option:selected").text();
-    addTag(tagId, tagName);
   });
 
   // ==================================================
@@ -199,5 +193,17 @@ $(document).ready(function () {
     e.preventDefault();
     let tagName = $("#create-tag-input").val().trim();
     createTag(tagName);
+  });
+
+  // Add tag to new resource
+  function addTag(tagId, tagName) {
+    let tag = `<button class="button" data-id="${tagId}">${tagName}</button>`;
+    $("#added-tag-list").append(tag);
+  }
+  $("#add-tag-btn").on("click", function (e) {
+    e.preventDefault();
+    let tagId = $("#tag-select").val();
+    let tagName = $("#tag-select option:selected").text();
+    addTag(tagId, tagName);
   });
 });

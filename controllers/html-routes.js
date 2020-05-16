@@ -81,6 +81,7 @@ module.exports = function (app) {
         return object;
       });
       res.render("saved", {
+        username: req.user.username,
         resources: resources,
       });
     } catch (err) {

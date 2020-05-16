@@ -8,12 +8,6 @@ const db = require("../models");
 const passport = require("../config/passport");
 const authenticate = require("../config/authenticate");
 
-// db.Resources.destroy({
-//   where: {
-//     id: 44,
-//   },
-// });
-
 // Routes
 // =============================================================
 module.exports = function (app) {
