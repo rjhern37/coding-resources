@@ -74,6 +74,12 @@ module.exports = function (app) {
         ],
       });
       let resources = result.Resources.map((resource) => resource.dataValues);
+      // Adding saved to each object in array - https://stackoverflow.com/questions/39827087/add-key-value-pair-to-all-objects-in-array
+      resources = resources.map(resource => {
+        let object = Object.assign({}, resource);
+        object.saved = true;
+        return object;
+      });
       res.render("saved", {
         resources: resources,
       });
