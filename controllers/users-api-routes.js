@@ -11,6 +11,12 @@ const authenticate = require("../config/authenticate");
 // Routes
 // =============================================================
 module.exports = function (app) {
+  // Logout user
+  app.get("/logout", function(req, res) {
+    req.logout('user');
+    res.redirect("/login");
+  });
+
   // Login user
   app.post("/api/users/login", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
@@ -31,7 +37,7 @@ module.exports = function (app) {
       });
   });
 
-  // Create new User-Resource relation (Save resource to user)
+  // Create new User-Resource relationship (Save resource to user)
   app.post("/api/users/save", authenticate, function (req, res) {
     db.UserResources.create({
       UserId: req.user.id,
@@ -45,10 +51,20 @@ module.exports = function (app) {
       });
   });
 
-  // Logout user
-  app.get("/logout", function(req, res) {
-    req.logout('user');
-    res.redirect("/login");
+  // Delete User-Resource relationship (Delete resource from user saved resources list)
+  app.post("/api/users/remove-resource", authenticate, function (req, res) {
+    db.UserResources.destroy({
+      where: {
+        UserId: req.user.id,
+        ResourceId: req.body.ResourceId,
+      }
+    })
+      .then(function (data) {
+        res.json(data);
+      })
+      .catch(function (err) {
+        res.status(500).send(err);
+      });
   });
 
   // Delete user (server-side only)

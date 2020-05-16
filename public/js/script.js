@@ -63,6 +63,7 @@ $(document).ready(function () {
   // ==================================================
   // RESOURCES
   // ==================================================
+  // Get ResourceId and TagIds and create ResourceTags
   function tagResource(name) {
     $.get("/api/resources/" + name)
     .then(function (data) {
@@ -132,6 +133,23 @@ $(document).ready(function () {
     e.preventDefault();
     let resourceId = +$(this).attr("data-id");
     saveResource(resourceId);
+  });
+  // Delete resource from user saved resources
+  function removeSavedResource(resourceId) {
+    $.post("/api/users/remove-resource", {
+      ResourceId: resourceId,
+    })
+      .then(function () {
+        window.location.replace("/saved");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  $(document).on("click", ".remove-saved-resource", function (e) {
+    e.preventDefault();
+    let resourceId = +$(this).attr("data-id");
+    removeSavedResource(resourceId);
   });
   // Search resources by tag name
   function findResourcesByTag(tagId) {

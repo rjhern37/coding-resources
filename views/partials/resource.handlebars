@@ -14,8 +14,11 @@
         </div>
     </div>
     <footer class="card-footer">
+        {{#if saved}}
+        <a data-id="{{id}}" class="remove-saved-resource card-footer-item hvr-sweep-to-right"><strong>Remove</strong></a>
+        {{else}}
         <a data-id="{{id}}" class="save-resource card-footer-item hvr-sweep-to-right"><strong>Save</strong></a>
-        <a data-id="{{id}}" class="delete-resource card-footer-item hvr-sweep-to-right"><strong>Delete</strong></a>
+        {{/if}}
     </footer>
 </div>
 </div>
