@@ -37,7 +37,7 @@ module.exports = function(app) {
   app.delete("/api/tags/delete", function (req, res) {
     db.Tags.destroy({
       where: {
-        id: ""
+        id: 16
       }
     });
   });
