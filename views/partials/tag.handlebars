@@ -1,1 +1,9 @@
+{{#if manage}}
+<a data-id="{{id}}" class="panel-block has-addons">
+    <strong>{{tagName}}</strong><button class="button delete-tag">delete</button>
+</a>
+{{else}}
 <option value="{{id}}">{{tagName}}</option>
+{{/if}}
+
+

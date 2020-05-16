@@ -8,6 +8,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const authenticate = require("../config/authenticate");
 
+
 // Routes
 // =============================================================
 module.exports = function (app) {
@@ -60,7 +61,7 @@ module.exports = function (app) {
   app.delete("/api/resources/delete", function (req, res) {
     db.Resources.destroy({
       where: {
-        id: "",
+        id: 52,
       },
     });
   });

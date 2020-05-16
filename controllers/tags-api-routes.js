@@ -34,11 +34,17 @@ module.exports = function(app) {
   });
 
   // Delete tag (server-side only)
-  app.delete("/api/tags/delete", function (req, res) {
+  app.post("/api/tags/delete", function (req, res) {
     db.Tags.destroy({
       where: {
-        id: 16
+        id: +req.body.tagId
       }
+    })
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.status(500).send(err);
     });
   });
 

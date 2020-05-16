@@ -39,12 +39,12 @@ section.section.pt-3 {
   font-size: 2rem;
 }
 
-a.navbar-item:hover, a:hover {
-  color: #4a4a4a;
+#saved-resources-title, #tags-title, #create-title {
+  color: #f4f4f9;
 }
 
-#saved-resources-title {
-  color: #f4f4f9;
+#create-title {
+  padding-bottom: .5rem;
 }
 
 .form-size {
@@ -77,20 +77,31 @@ a.navbar-item:hover, a:hover {
   background-color: #70e6df;
 }
 
+.navbar-start {
+  align-items: center;
+}
+
+a.navbar-item {
+  color: #4a4a4a;
+}
+
 a.navbar-item:hover {
   background-color: #70e6df;
   color: #f4f4f9;
+  border-radius: 5px;
 }
 
 .redirect-link {
   margin-top: 2rem;
 }
 
-#logout {
+#logout, .delete-tag {
   background-color: tomato;
+  color: #f4f4f9;
 }
-#logout:hover {
+#logout:hover, .delete-tag:hover {
   background-color: rgb(255, 121, 97);
+  color: #f4f4f9;
 }
 
 .card {
@@ -124,7 +135,7 @@ a.card-footer-item:hover {
   color: #f4f4f9;
 }
 
-#create-resource, #search-btn, #add-tag-btn, #added-tag-list .button, #create-tag-btn {
+#create-resource, #search-btn, #add-tag-btn, #added-tag-list .button, #create-tag-btn, .tag:not(body).is-color  {
   background-color: #18dbd0;
   color: #f4f4f9;
   
@@ -142,15 +153,49 @@ a.card-footer-item:hover {
   padding-bottom: 1rem;
 }
 
-.create-tag {
-  padding-top: 1rem;
+.panel-block {
+  justify-content: space-between;
+}
+
+.tag {
+  
+  margin-right: .25rem;
 }
 
 .button {
   border: none;
 }
 
+.tag-container {
+  width: 50%;
+}
+
+.panel-block:not(:last-child), .panel-block:last-child, .panel-block:not(:last-child):hover, .panel-block:last-child:hover  {
+  background-color: #f4f4f9;
+  color: #4a4a4a;
+  border-left: 6px solid #18dbd0;
+  margin-bottom: .5rem;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
 /* Hover.css - https://github.com/IanLunn/Hover/blob/master/css/hover.css */
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 /* Sweep To Right */
 .hvr-sweep-to-right {
   display: inline-block;
@@ -203,6 +248,9 @@ a.card-footer-item:hover {
     margin-bottom: 1rem;
   }
   .form-size {
+    width: 95%;
+  }
+  .tag-container {
     width: 95%;
   }
   .page-title, .page-logo {

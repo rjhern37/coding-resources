@@ -1,6 +1,7 @@
 {{> navbar-full}}
-<section class="section pt-3">
+<section class="section">
     <div class="container form-size">
+        <h1 id="create-title" class="title has-text-centered"><i class="fas fa-plus"></i> Create Resource</h1>
         <div class="columns">
             <div class="column form-container">
                 <div class="field">
@@ -33,19 +34,8 @@
                     <div id="added-tag-list" class="buttons">
                     </div>
                 </div>
-                <div class="field has-addons create-tag">
-                    <div class="control has-icons-left">
-                        <input id="create-tag-input" class="input" type="text" placeholder="Enter tag name">
-                        <div class="icon is-small is-left">
-                            <i class="fas fa-tag"></i>
-                        </div>
-                    </div>
-                    <div class="control ">
-                        <button id="create-tag-btn" class="button"><strong>Create Tag</strong></button>
-                    </div>
-                </div>
                 <div class="field has-addons full-tag-list">
-                    <div class="control is-expanded has-icons-left">
+                    <div class="control has-icons-left">
                         <div class="select is-fullwidth">
                             <select id="tag-select" name="tag" placeholder="search by tag">
                                 {{#each tags}}

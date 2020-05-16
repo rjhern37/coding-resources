@@ -1,0 +1,31 @@
+{{> navbar-full}}
+<section class="section">
+    <div class="container tag-container">
+        <h1 id="tags-title" class="title has-text-centered"><i class="fas fa-tag"></i> Tags</h1>
+        <div class="field is-expanded has-addons create-tag">
+            <div class="control has-icons-left">
+                <input id="create-tag-input" class="input" type="text" placeholder="Enter tag name">
+                <div class="icon is-small is-left">
+                    <i class="fas fa-tag"></i>
+                </div>
+            </div>
+            <div class="control ">
+                <button id="create-tag-btn" class="button">
+                    <strong>Create Tag</strong>
+                    <span class="icon">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="panel is-hoverable">
+                    {{#each tags}}
+                    {{> tag}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
