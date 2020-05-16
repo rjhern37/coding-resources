@@ -43,6 +43,10 @@ a.navbar-item:hover, a:hover {
   color: #4a4a4a;
 }
 
+#saved-resources-title {
+  color: #f4f4f9;
+}
+
 .form-size {
   width: 70%;
 }
@@ -201,6 +205,9 @@ a.card-footer-item:hover {
   }
   .page-title, .page-logo {
     font-size: 1.25rem;
+  }
+  #saved-resources-title {
+    font-size: 1rem;
   }
   .column.form-container {
     padding: 1.5rem;
