@@ -16,14 +16,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     link: {
       type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
       validate: {
         isUrl: true,
       },
-    },
-    featured: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
+    }
   });
 
   return Resources;

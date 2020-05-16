@@ -102,16 +102,18 @@ a.navbar-item:hover {
   background-color: #18dbd0;
 }
 
-.card-header-title a {
+.card-header-title a, .card-header-title a:hover {
   color: #f4f4f9;
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
-.card-header-title a:hover {
-  color: #f4f4f9;
-  font-size: 1.5rem;
-  font-weight: 500;
+.link-icon {
+  font-size: 1rem;
+}
+
+.link-icon:hover {
+  font-size: 1.25rem;
 }
 
 a.card-footer-item {
@@ -215,5 +217,8 @@ a.card-footer-item:hover {
   .redirect-link {
     margin-top: 1rem;
     font-size: 0.75rem;
+  }
+  .card-header-title a, .card-header-title a:hover {
+    font-size: 1.25rem;
   }
 }

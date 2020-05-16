@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     tagName: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     }
   });
 
