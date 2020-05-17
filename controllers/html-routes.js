@@ -101,6 +101,23 @@ module.exports = function (app) {
     }
   });
 
+  // MANAGE TAGS PAGE
+  app.get("/manage", authenticate, async function (req, res) {
+    try {
+      let tags = await db.Tags.findAll().map((tag) => tag.dataValues);
+      tags = tags.map(tag => {
+        let object = Object.assign({}, tag);
+        object.manage = true;
+        return object;
+      });
+      res.render("manage", {
+        tags: tags,
+      });
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
   // SEARCH RESOURCES BY TAGNAME
   app.get("/search/:tagId", authenticate, async function (req, res) {
     try {

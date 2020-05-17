@@ -31,7 +31,7 @@ $(document).ready(function () {
     $("#username-input").val("");
     $("#password-input").val("");
   });
-  
+
   // Login
   function loginUser(username, password) {
     // Login user and redirect to home
@@ -66,19 +66,19 @@ $(document).ready(function () {
   // ==================================================
   // Get ResourceId and TagIds and create ResourceTags
   function tagResource(name) {
-    $.get("/api/resources/" + name)
-    .then(function (data) {
+    $.get("/api/resources/" + name).then(function (data) {
       let resourceId = data.id;
       // Tag Array - https://stackoverflow.com/questions/43434561/retrieving-data-attributes-of-all-child-elements-in-jquery
       var tagIdArr = [];
       var children = $("#added-tag-list").children(); // Get all added tags
-      children.each(function (i, tag) { // loop over them
+      children.each(function (i, tag) {
+        // loop over them
         // get id # and push to array
         tagIdArr.push($(tag).data("id"));
       });
       $.post("api/resource/tags", {
-          resourceId: resourceId,
-          tags: tagIdArr
+        resourceId: resourceId,
+        tags: tagIdArr,
       });
     });
   }
@@ -181,7 +181,7 @@ $(document).ready(function () {
       tagName: tagName,
     })
       .then(function () {
-        window.location.replace("/create");
+        window.location.replace("/manage");
 
         // If there's an error, log the error
       })
@@ -197,7 +197,7 @@ $(document).ready(function () {
 
   // Add tag to new resource
   function addTag(tagId, tagName) {
-    let tag = `<button class="button" data-id="${tagId}">${tagName}</button>`;
+    let tag = `<span data-id="${tagId}" class="tag is-color is-medium">${tagName}<button class="delete is-small"></button></span>`;
     $("#added-tag-list").append(tag);
   }
   $("#add-tag-btn").on("click", function (e) {
@@ -205,5 +205,35 @@ $(document).ready(function () {
     let tagId = $("#tag-select").val();
     let tagName = $("#tag-select option:selected").text();
     addTag(tagId, tagName);
+  });
+
+  // Remove tag from new resource
+  function removeTag(tag) {
+    tag.remove();
+  }
+  $(document).on("click", ".delete", function (e) {
+    e.preventDefault();
+    let tag = $(this).closest(".tag");
+    console.log(tag);
+    removeTag(tag);
+  });
+
+  // Delete tag
+  // Delete resource from user saved resources
+  function deleteTag(tagId) {
+    $.post("/api/tags/delete", {
+      tagId: tagId,
+    })
+      .then(function () {
+        window.location.replace("/manage");
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  $(document).on("click", ".delete-tag", function (e) {
+    e.preventDefault();
+    let tagId = $(this).closest(".panel-block").data('id');
+    deleteTag(tagId);
   });
 });
