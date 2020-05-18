@@ -17,7 +17,7 @@
   
   
   ## Installation
-  The app is live [here]()
+  The app is live [here](https://coding-resources-312.herokuapp.com/)
   
   ## Usage
   This project is so easy to use I didn't include any other instructions.
@@ -48,4 +48,4 @@
   
   ## Questions
   
-  For questions or feedback email me at garrettgassensmith@gmail.com  
+  For questions or feedback email Garrett at garrettgassensmith@gmail.com  

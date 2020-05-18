@@ -1,3 +1,5 @@
+/* GENERAL */
+/* ========================================== */
 html {
   margin: 0px;
   height: 100%;
@@ -12,14 +14,6 @@ body {
   color: #4a4a4a;
 }
 
-.navbar {
-  background-color: #f4f4f9;
-  border-bottom: solid 6px #18dbd0;
-  margin-bottom: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 section.section {
   padding-top: 0;
 }
@@ -28,22 +22,13 @@ section.section.pt-3 {
   padding-top: 3rem;
 }
 
-.page-logo {
-  font-size: 2rem;
-}
-
-.page-title, .page-title:hover {
-  padding-left: 0;
-  color: #4a4a4a!important;
-  font-weight: 700;
-  font-size: 2rem;
-}
-
-#saved-resources-title, #tags-title, #create-title {
+#saved-resources-title,
+#create-title,
+#tags-title {
   color: #f4f4f9;
 }
 
-#create-title {
+#create-title { 
   padding-bottom: .5rem;
 }
 
@@ -70,11 +55,57 @@ section.section.pt-3 {
 }
 
 .button.is-link {
+  background-color: #70e6df;
+}
+.button.is-link:hover {
   background-color: #18dbd0;
 }
 
-.button.is-link:hover {
-  background-color: #70e6df;
+.select:not(.is-multiple):not(.is-loading)::after, 
+.field.has-addons .control .select select:not([disabled]):active,
+.field.has-addons .control .select select:not([disabled]):focus,
+.input:active, .input:focus,
+.textarea:active, .textarea:focus  {
+  border-color: #18dbd0;
+}
+
+/* REGISTER */
+/* ========================================== */
+.redirect-link {
+  margin-top: 2rem;
+}
+
+.redirect-link p a {
+  color: #18dbd0; 
+  font-weight: 700;
+}
+.redirect-link p a:hover,
+.redirect-link p a:active,
+.redirect-link p a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* NAVBAR */
+/* ========================================== */
+.navbar {
+  background-color: #f4f4f9;
+  border-bottom: solid 6px #18dbd0;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.page-logo {
+  font-size: 2rem;
+}
+
+.page-title,
+.page-title:hover {
+  padding-left: 0;
+  color: #4a4a4a!important;
+  font-weight: 700;
+  font-size: 2rem;
 }
 
 .navbar-start {
@@ -84,26 +115,18 @@ section.section.pt-3 {
 a.navbar-item {
   color: #4a4a4a;
 }
-
-a.navbar-item:hover {
-  background-color: #70e6df;
+a.navbar-item:hover,
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:active {
+  background-color: #18dbd0;
   color: #f4f4f9;
   border-radius: 5px;
+  outline: none;
 }
 
-.redirect-link {
-  margin-top: 2rem;
-}
-
-#logout, .delete-tag {
-  background-color: tomato;
-  color: #f4f4f9;
-}
-#logout:hover, .delete-tag:hover {
-  background-color: rgb(255, 121, 97);
-  color: #f4f4f9;
-}
-
+/* RESOURCE CARDS */
+/* ========================================== */
 .card {
   background-color: #f4f4f9;
   margin-bottom: 1rem;
@@ -113,7 +136,8 @@ a.navbar-item:hover {
   background-color: #18dbd0;
 }
 
-.card-header-title a, .card-header-title a:hover {
+.card-header-title a,
+.card-header-title a:hover {
   color: #f4f4f9;
   font-size: 1.5rem;
   font-weight: 700;
@@ -122,7 +146,6 @@ a.navbar-item:hover {
 .link-icon {
   font-size: 1rem;
 }
-
 .link-icon:hover {
   font-size: 1.25rem;
 }
@@ -135,16 +158,40 @@ a.card-footer-item:hover {
   color: #f4f4f9;
 }
 
-#create-resource, #search-btn, #add-tag-btn, #added-tag-list .button, #create-tag-btn, .tag:not(body).is-color  {
-  background-color: #18dbd0;
-  color: #f4f4f9;
-  
+/* BUTTONS */
+/* ========================================== */
+.button {
+  border: none;
 }
-#create-resource:hover, #search-btn:hover, #add-tag-btn:hover, #create-tag-btn:hover {
-  background-color: #70e6df;
+
+#logout, .delete-tag {
+  background-color: rgb(255, 121, 97);
+  color: #f4f4f9;
+}
+#logout:hover, .delete-tag:hover {
+  background-color: tomato;
   color: #f4f4f9;
 }
 
+#create-resource,
+#search-btn,
+#add-tag-btn,
+#added-tag-list .button,
+#create-tag-btn,
+.tag:not(body).is-color  {
+  background-color: #70e6df;
+  color: #f4f4f9;
+}
+#create-resource:hover,
+#search-btn:hover,
+#add-tag-btn:hover,
+#create-tag-btn:hover {
+  background-color: #18dbd0;
+  color: #f4f4f9;
+}
+
+/* TAGS */
+/* ========================================== */
 .field.has-addons {
   align-items: center;
 }
@@ -157,20 +204,22 @@ a.card-footer-item:hover {
   justify-content: space-between;
 }
 
-.tag {
-  
-  margin-right: .25rem;
+.panel a {
+  cursor: default;
 }
 
-.button {
-  border: none;
+.tag {
+  margin-right: .25rem;
 }
 
 .tag-container {
   width: 50%;
 }
 
-.panel-block:not(:last-child), .panel-block:last-child, .panel-block:not(:last-child):hover, .panel-block:last-child:hover  {
+.panel-block:not(:last-child),
+.panel-block:last-child,
+.panel-block:not(:last-child):hover,
+.panel-block:last-child:hover  {
   background-color: #f4f4f9;
   color: #4a4a4a;
   border-left: 6px solid #18dbd0;
@@ -180,6 +229,7 @@ a.card-footer-item:hover {
 }
 
 /* Hover.css - https://github.com/IanLunn/Hover/blob/master/css/hover.css */
+/* ========================================== */
 /* Grow */
 .hvr-grow {
   display: inline-block;
@@ -237,9 +287,8 @@ a.card-footer-item:hover {
   transform: scaleX(1);
 }
 
-@media only screen and (min-width: 600px) {
-}
-
+/* MEDIA QUERY */
+/* ========================================== */
 @media screen and (max-width: 600px) {
   .navbar {
     margin-bottom: 1rem;
