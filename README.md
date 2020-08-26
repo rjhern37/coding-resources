@@ -20,8 +20,8 @@
   The app is live [here](https://coding-resources-312.herokuapp.com/)
   
   ## Usage
-  This project is so easy to use I didn't include any other instructions.
-  
+
+  <img alt="app visual demo" src="public/assets/coding-resourcesGify.gif"/>  
   
   ## Contributing
   There are currently no guidelines for contributing, fork and edit to your hearts content.
